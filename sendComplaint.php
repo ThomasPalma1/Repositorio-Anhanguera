@@ -12,18 +12,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="css/sendComplaint.css">
     </head>
-    <style>
-        body{font-family: Arial, Helvetica, sans-serif;}
-        .content{display: flex;justify-content: center;}
-        .contato{width: 100%;max-width: 500px;}
-        .form{display: flex;flex-direction: column;}
-        .field{padding: 10px;margin-bottom: 15px;border: 1px solid #DDD;border-radius: 5px;font-family: Arial, Helvetica, sans-serif;font-size: 16px;}
-        textarea{height: 150px;}
-    </style>
-    
-    </style>
     <body>
         <section class="content">
             <div class="contato">
@@ -64,6 +54,7 @@
                         </select>
                         <textarea class="field" name="descricao" placeholder="Digite sua mensagem aqui" required></textarea>   
                         <input class="field" type="submit" value="Enviar">
+                        <a href="main.php">Voltar</a>
                 </form>
             </div>
         </section>

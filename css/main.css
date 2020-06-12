@@ -6,6 +6,34 @@ body {
   align-items: center;
   text-align: center;
   background: #1a1e23;
+  -webkit-animation: fadeIn 0.5s ease-in-out;
+  -moz-animation: fadeIn 0.5s ease-in-out;
+  -o-animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+      
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+      
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+      
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+      
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 ul {
@@ -16,6 +44,10 @@ ul {
 }
 ul li {
   padding: 6px 0;
+}
+ul li {
+  color: #ecf0f1;
+  text-transform: uppercase;
 }
 ul li a {
   position: relative;
@@ -41,6 +73,7 @@ ul li a::after {
 }
 ul li a:hover {
   color: #95a5a6;
+  text-decoration: none;
 }
 ul li a:hover::after {
   transform: scaleX(1);

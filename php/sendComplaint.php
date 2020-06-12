@@ -1,49 +1,53 @@
 <?php
 
-    function sendComplaint(String $descricao, String $rua, String $bairro, String $cidade, String $estado){
+    session_start();
+
+    function sendComplaint(String $descricao, String $rua, String $bairro, String $cidade, String $estado, int $qtdDenuncias){
 
         include_once('connection.php');
-        session_start();
 
         if(isset($_SESSION['email'])){ //verificando se o usuário está logado
 
-            $id = $_SESSION['id'];
+            if ($qtdDenuncias < 20){ //verificando se o usuário possui menos de 20 denúncias
+                $id = $_SESSION['id'];
+                $status = "Sua denúncia será averiguada.";
 
-            $sqlDenuncias = "INSERT INTO denuncias (descricao, id_usuario) VALUES ('$descricao', '$id')"; //enviando a descrição para o banco
-            mysqli_query($connection, $sqlDenuncias);
-
-            $idDenuncia = strval(mysqli_insert_id($connection)); //ultima denuncia enviada
-
-            $sqlEnderecos = "INSERT INTO enderecos (estado, rua, cidade, bairro, id_denuncia) VALUES ('$estado', '$rua', '$cidade', '$bairro', '$idDenuncia')";
-            mysqli_query($connection, $sqlEnderecos);
-
-            $status = '1';
-            $mensagem = "Sua denúncia será averiguada.";
-            $sqlAcompanhamento = "INSERT INTO acompanhamento (id_denuncia, status, mensagem) VALUES ('$idDenuncia', '$status', '$mensagem')";
-            mysqli_query($connection, $sqlAcompanhamento);
+                $sqlDenuncias = "INSERT INTO denuncias (descricao, id_usuario, rua, status, bairro, cidade, estado) VALUES ('$descricao', '$id', '$rua', '$status', '$bairro', '$cidade', '$estado')"; //enviando a descrição para o banco
+                mysqli_query($connection, $sqlDenuncias);
+                
+                $to = "contato@msaude.com.br"; //criando a estrutura do e-mail
+                $subject = "Denúncia.";
+                $corpoemail = "Email: ".$_SESSION['email']. "\n".
+                                "Rua: ".$rua. "\n".
+                                "Bairro: ".$bairro. "\n".
+                                "Cidade: ".$cidade. "\n".
+                                "Estado: ".$estado. "\n".
+                                "Mensagem: ".$descricao;
             
-            $to = "contato@msaude.com.br"; //criando a estrutura do e-mail
-            $subject = "Denúncia.";
-            $corpoemail = "Email: ".$_SESSION['email']. "\n".
-                            "Rua: ".$rua. "\n".
-                            "Bairro: ".$bairro. "\n".
-                            "Cidade: ".$cidade. "\n".
-                            "Estado: ".$estado. "\n".
-                            "Mensagem: ".$descricao;
-            
-            
-            $header = "contato@zerodengue.com.br"."\n".
-                            "Reply-To:".$_SESSION['email']."\n".
-                            "X=Mailer:PHP/".phpversion();
+                $header = "contato@zerodengue.com.br"."\n".
+                                "Reply-To:".$_SESSION['email']."\n".
+                                "X=Mailer:PHP/".phpversion();
 
-            mail($to,$subject,$corpoemail,$header); //mandando e-mail para o ministério da saúde
+                mail($to,$subject,$corpoemail,$header); //mandando e-mail para o ministério da saúde
 
-            echo('A denúncia foi enviada. '); //o usuário já está logado
-            echo('<a href="../main.php">Back</a>');
+                $qtdDenuncias = $qtdDenuncias + 1;
+                $sqlQtdDenuncias = "UPDATE usuarios SET qtd_denuncias = '$qtdDenuncias' WHERE id_usuario = '$id'";
+                mysqli_query($connection, $sqlQtdDenuncias);
+
+                echo('A denúncia foi enviada. '); //o usuário já está logado
+                echo('<a href="../main.php">Voltar</a>');
+
+                return $qtdDenuncias;
+            }
+            else {
+                echo('Você já possui 20 denúncias.'); //o usuário possui 20 denuncias
+                echo('<a href="../main.php">Voltar</a>');
+            }
+
         }
-        else{
+        else {
             echo('Você não está logado. '); //o usuário já está logado
-            echo('<a href="../index.php">Back</a>');
+            echo('<a href="../main.php">Voltar</a>');
         }
 
     }
@@ -53,7 +57,9 @@
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
+    $qtdDenuncias = intval($_SESSION['qtdDenuncias']);
 
+    $_SESSION['qtdDenuncias'] = sendComplaint($descricao, $rua, $bairro, $cidade, $estado, $qtdDenuncias); //chamando a função
 
-    sendComplaint($descricao, $rua, $bairro, $cidade, $estado); //chamando a função
+    echo(strval($_SESSION['qtdDenuncias']));
 ?>

@@ -9,7 +9,7 @@
         $quantityUsers = mysqli_fetch_array($verifyData); //transforma os usuários num array para que eles possam ser contados
 
         if ($quantityUsers == 0){ //se a quantidade de usuários com o email digitado for diferente de zero, quer dizer que esse e-mail já está cadastrado no sistema!
-            $queryInsert = "INSERT INTO usuarios (email, senha, nome) VALUES ('$email','$userPassword','$name')";
+            $queryInsert = "INSERT INTO usuarios (email, senha, nome, qtd_denuncias) VALUES ('$email','$userPassword','$name', 0)";
             $insertData = mysqli_query($connection, $queryInsert); //cadastrando o usuário
             echo('Sign up successful!');
             header('Location: ../index.php');

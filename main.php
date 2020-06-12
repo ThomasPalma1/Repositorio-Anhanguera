@@ -1,8 +1,6 @@
 <?php
-
     include_once('php/connection.php');
     session_start();
-
 ?>
 <!DOCTYPE html>
     <head>
@@ -15,12 +13,11 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        
         <ul>
-            <li><a href="main.php">home</a></li>
-            <li><a href="sendComplaint.php">send complaint</a></li>
-            <li><a href="myComplaints.php">my complaints</a></li>
-            <li><a href="php/logout.php">logout</a></li>
+            <li>olá, <?php echo($_SESSION['name']); ?></li>
+            <li><a href="sendComplaint.php">enviar denúncia</a></li>
+            <li><a href="myComplaints.php">minhas denúncias</a></li>
+            <li><a href="php/logout.php">sair</a></li>
         </ul>
     </body>
 </html>

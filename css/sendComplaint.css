@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+body {
+    -webkit-animation: fadeIn 0.5s ease-in-out;
+    -moz-animation: fadeIn 0.5s ease-in-out;
+    -o-animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+.contato{
+    width: 100%;max-width: 500px;padding:10px
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.field{
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 16px;
+}
+textarea{
+    height: 150px;
+}

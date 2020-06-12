@@ -1,0 +1,42 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #1a1e23;
+    -webkit-animation: fadeIn 0.5s ease-in-out;
+    -moz-animation: fadeIn 0.5s ease-in-out;
+    -o-animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+        
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+div{
+    width: 50%;
+    text-align: left;
+    padding: 10px;
+  }
