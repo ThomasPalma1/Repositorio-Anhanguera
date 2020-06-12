@@ -14,7 +14,10 @@
             $_SESSION['email'] = $dados['email'];
             $_SESSION['id'] = $dados['id_usuario'];
             $_SESSION['name'] = $dados['nome'];
+<<<<<<< HEAD
             $_SESSION['qtdDenuncias'] = $dados['qtd_denuncias'];
+=======
+>>>>>>> ab0bbf129a9819c6f93a9a570fe5c0ba04ed8313
             header('Location: ../main.php');
         }
         else {

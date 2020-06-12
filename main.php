@@ -14,10 +14,17 @@
     </head>
     <body>
         <ul>
+<<<<<<< HEAD
             <li>olá, <?php echo($_SESSION['name']); ?></li>
             <li><a href="sendComplaint.php">enviar denúncia</a></li>
             <li><a href="myComplaints.php">minhas denúncias</a></li>
             <li><a href="php/logout.php">sair</a></li>
+=======
+            <li>hello, <?php echo($_SESSION['name']); ?></li>
+            <li><a href="sendComplaint.php">send complaint</a></li>
+            <li><a href="myComplaints.php">my complaints</a></li>
+            <li><a href="php/logout.php">logout</a></li>
+>>>>>>> ab0bbf129a9819c6f93a9a570fe5c0ba04ed8313
         </ul>
     </body>
 </html>

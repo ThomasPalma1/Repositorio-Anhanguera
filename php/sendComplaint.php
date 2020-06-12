@@ -34,8 +34,29 @@
                 $sqlQtdDenuncias = "UPDATE usuarios SET qtd_denuncias = '$qtdDenuncias' WHERE id_usuario = '$id'";
                 mysqli_query($connection, $sqlQtdDenuncias);
 
+<<<<<<< HEAD
                 echo('A denúncia foi enviada. '); //o usuário já está logado
                 echo('<a href="../main.php">Voltar</a>');
+=======
+            $status = '1';
+            $mensagem = "Sua denúncia será averiguada.";
+            $sqlAcompanhamento = "INSERT INTO acompanhamento (id_denuncia, status) VALUES ('$idDenuncia','$mensagem')";
+            mysqli_query($connection, $sqlAcompanhamento);
+            
+            $to = "contato@msaude.com.br"; //criando a estrutura do e-mail
+            $subject = "Denúncia.";
+            $corpoemail = "Email: ".$_SESSION['email']. "\n".
+                            "Rua: ".$rua. "\n".
+                            "Bairro: ".$bairro. "\n".
+                            "Cidade: ".$cidade. "\n".
+                            "Estado: ".$estado. "\n".
+                            "Mensagem: ".$descricao;
+            
+            
+            $header = "contato@zerodengue.com.br"."\n".
+                            "Reply-To:".$_SESSION['email']."\n".
+                            "X=Mailer:PHP/".phpversion();
+>>>>>>> ab0bbf129a9819c6f93a9a570fe5c0ba04ed8313
 
                 return $qtdDenuncias;
             }
