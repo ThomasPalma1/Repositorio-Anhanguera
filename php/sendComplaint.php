@@ -19,7 +19,7 @@
 
             $status = '1';
             $mensagem = "Sua denúncia será averiguada.";
-            $sqlAcompanhamento = "INSERT INTO acompanhamento (id_denuncia, status, mensagem) VALUES ('$idDenuncia', '$status', '$mensagem')";
+            $sqlAcompanhamento = "INSERT INTO acompanhamento (id_denuncia, status) VALUES ('$idDenuncia','$mensagem')";
             mysqli_query($connection, $sqlAcompanhamento);
             
             $to = "contato@msaude.com.br"; //criando a estrutura do e-mail

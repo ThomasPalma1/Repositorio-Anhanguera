@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     function retrieveComplaintsFromUser($id){
 
         include_once('connection.php');
@@ -17,18 +15,17 @@
 
         $sqlAcompanhamento = "SELECT * FROM acompanhamento WHERE id_denuncia = '$idDenuncia'";
         $resultAcompanhamento = mysqli_query($connection, $sqlAcompanhamento);
-        $dadosAcompanhento = mysqli_fetch_array($resultAcompanhamento);
+        $dadosAcompanhamento = mysqli_fetch_array($resultAcompanhamento);
 
         
         while ($dadosDenuncias = mysqli_fetch_array($resultDenuncias)) {
             echo('<article>');
-            echo('Rua: '.$dadosEndereco['rua']);
-            echo('Bairro: '.$dadosAcompanhento['status']);
-            echo('Mensagem: '.$dadosDenus['bairro']);
-            echo('Cidade: '.$dadosDenuncias['cidade']);
-            echo('Estado: '.$dadosDenuncias['estado']);
-            echo('Descrição: '.$dadosDenuncias['descricao']);
-            echo('Status: '.$dadosAcompanhento['mensagem']); 
+                echo('<br>Rua: '.$dadosEndereco['rua']);
+                echo('<br>Bairro: '.$dadosEndereco['bairro']);
+                echo('<br>Cidade: '.$dadosEndereco['cidade']);
+                echo('<br>Estado: '.$dadosEndereco['estado']);
+                echo('<br>Descrição: '.$dadosDenuncias['descricao']);
+                echo('<br>Status: '.$dadosAcompanhamento['mensagem']);
             echo('</article>');
         }
     }

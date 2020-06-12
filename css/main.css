@@ -17,6 +17,10 @@ ul {
 ul li {
   padding: 6px 0;
 }
+ul li {
+  color: #ecf0f1;
+  text-transform: uppercase;
+}
 ul li a {
   position: relative;
   display: block;

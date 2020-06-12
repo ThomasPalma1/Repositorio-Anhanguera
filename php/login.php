@@ -13,6 +13,7 @@
         if ($quantityUsers == 1){ //se houver um usuário com o email digitado
             $_SESSION['email'] = $dados['email'];
             $_SESSION['id'] = $dados['id_usuario'];
+            $_SESSION['name'] = $dados['nome'];
             header('Location: ../main.php');
         }
         else {
